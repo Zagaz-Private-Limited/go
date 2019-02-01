@@ -5,14 +5,14 @@ This document describes how to build Horizon from source, so that you can test a
 ## Building Horizon
 Building Horizon requires the following developer tools:
 
-- A Unix-like operating system with the common core commands (cp, tar, mkdir, bash, etc.)
+- A [Unix-like](https://en.wikipedia.org/wiki/Unix-like) operating system with the common core commands (cp, tar, mkdir, bash, etc.)
 - Golang 1.9 or later
-- [git](https://git-scm.com/)
+- [git](https://git-scm.com/) (to check out Horizon's source code)
 - [go-dep](https://golang.github.io/dep/) (package manager for Go)
 - [mercurial](https://www.mercurial-scm.org/) (needed for `go-dep`)
 
 1. Set your [GOPATH](https://github.com/golang/go/wiki/GOPATH) environment variable, if you haven't already. The default `GOPATH` is `$HOME/go`.
-2. Clone the Stellar Go monorepo:  `go get github.com/stellar/go`. You should see the repository present at `$GOPATH/src/github.com/stellar/go`.
+2. Clone the [Stellar Go](https://github.com/stellar/go) monorepo:  `go get github.com/stellar/go`. You should see the repository present at `$GOPATH/src/github.com/stellar/go`.
 3. Enter the source dir: `cd $GOPATH/src/github.com/stellar/go`, and download external dependencies: `dep ensure -v`. You should see the downloaded third party dependencies in `$GOPATH/pkg`.
 4. Compile the Horizon binary: `cd $GOPATH; go install github.com/stellar/go/services/horizon`. You should see the resulting `horizon` executable in `$GOPATH/bin`.
 5. Add Go binaries to your PATH in your `bashrc` or equivalent, for easy access: `export PATH=${GOPATH//://bin:}/bin:$PATH`
@@ -21,12 +21,12 @@ Open a new terminal. Confirm everything worked by running `horizon --help` succe
 
 ## Set up Horizon's database
 Horizon uses a Postgres database backend to store test fixtures and record information ingested from an associated Stellar Core. To set this up:
-1. Install Postgres.
-2. Run `createdb horizon_schema` to initialise an empty database for Horizon's use.
-3. Run `horizon db init` to install Horizon's database schema.
+1. Install [PostgreSQL](https://www.postgresql.org/).
+2. Run `createdb horizon_dev` to initialise an empty database for Horizon's use.
+3. Run `horizon db init --db-url postgres://localhost/horizon_dev` to install Horizon's database schema.
 
 ### Database problems?
-1. Depending on your installation's defaults, you may need to configure a Postgres DB user with appropriate permissions for Horizon to access the database you created. Refer to the Postgres documentation for details. Note: Remember to restart the Postgres server after making any changes to `pg_hba.conf` (the Postgres configuration file), or your changes won't take effect!
+1. Depending on your installation's defaults, you may need to configure a Postgres DB user with appropriate permissions for Horizon to access the database you created. Refer to the [Postgres documentation](https://www.postgresql.org/docs/current/sql-createuser.html) for details. Note: Remember to restart the Postgres server after making any changes to `pg_hba.conf` (the Postgres configuration file), or your changes won't take effect!
 2. Make sure you pass the appropriate database name and user (and port, if using something non-standard) to Horizon using `--db-url`. One way is to use a Postgres URI with the following form: `postgres://USERNAME:PASSWORD@localhost:PORT/DB_NAME`.
 3. If you get the error `connect failed: pq: SSL is not enabled on the server`, add `?sslmode=disable` to the end of the Postgres URI to allow connecting without SSL.
 4. If your server is responding strangely, and you've exhausted all other options, reboot the machine. On some systems `service postgresql restart` or equivalent may not fully reset the state of the server.
@@ -77,10 +77,11 @@ You can connect Horizon to `stellar-core` at any time, but Horizon will not begi
 Now run your development version of Horizon (which is outside of the container), pointing it at the `stellar-core` running inside the container:
 
 ```bash
-horizon --db-url="postgres://localhost/horizon_schema" --stellar-core-db-url="postgres://stellar:postgres@localhost:8002/core" --stellar-core-url="http://localhost:11626" --port 8001 --network-passphrase "Test SDF Network ; September 2015" --ingest
+horizon --db-url="postgres://localhost/horizon_dev" --stellar-core-db-url="postgres://stellar:postgres@localhost:8002/core" --stellar-core-url="http://localhost:11626" --port 8001 --network-passphrase "Test SDF Network ; September 2015" --ingest
 ```
 
-If all is well, you should see ingest logs written to standard out. You can test your Horizon instance with a query like: http://localhost:8001/transactions?cursor=&limit=10&order=asc. Use the [Stellar Laboratory](https://www.stellar.org/laboratory/) to craft other queries to try out.
+If all is well, you should see ingest logs written to standard out. You can test your Horizon instance with a query like: http://localhost:8001/transactions?cursor=&limit=10&order=asc. Use the [Stellar Laboratory](https://www.stellar.org/laboratory/) to craft other queries to try out,
+and read about the available endpoints and see examples in the [Horizon API reference](https://www.stellar.org/developers/horizon/reference/).
 
 ## The development cycle
 Congratulations! You can now run the full development cycle to build and test your code.
