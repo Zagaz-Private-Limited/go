@@ -91,4 +91,4 @@ Congratulations! You can now run the full development cycle to build and test yo
 4. Run Horizon (pointing at your running `stellar-core`)
 5. Try Horizon queries
 
-Once you've got something that works, open a pull request, linking to the issue that you are resolving with your contribution. We'll get back to you as quickly as we can.
+Check out the [Stellar contributing guide](https://github.com/stellar/docs/blob/master/CONTRIBUTING.md) to see how to contribute your work to the Stellar repositories. Once you've got something that works, open a pull request, linking to the issue that you are resolving with your contribution. We'll get back to you as quickly as we can.
