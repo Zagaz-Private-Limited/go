@@ -1,8 +1,6 @@
----
-title: Horizon Development Guide
----
+## Notes for Developers
 
-This document contains topics related to the development of Horizon.
+This document contains additional information related to the development of Horizon. For a detailed discussion of how to build and develop against Horizon, see the [Horizon development guide](developing.md).
 
 - [Initial set up](#setup)
 - [Regenerating generated code](#regen)
@@ -13,9 +11,7 @@ This document contains topics related to the development of Horizon.
 
 ---
 ## <a name="setup"></a> Initial set up
-Compile and install Horizon as described in the [Horizon administration](reference/admin.md##Building) doc.
-
-You will need a working postgres setup and a configured DB user to run tests successfully. Remember to restart postgres after any permissions change in `pg_hba.conf`! Horizon uses this DB server to store test fixtures and record state. You also need a local Redis server installed.
+Compile and install Horizon as described in the [Horizon development guide](developing.md).
 
 ## <a name="regen"></a> Regenerating generated code
 
@@ -27,7 +23,7 @@ After the above are installed, run `go generate github.com/stellar/go/services/h
 
 ## <a name="scenarios"></a> Adding, rebuilding and using test scenarios
 
-In order to simulate ledgers Horizon uses [`stellar-core-commander`](https://github.com/stellar/stellar_core_commander) recipe files  to add transactions and operations to ledgers using stellar-core test framework.
+In order to simulate ledgers Horizon uses [`stellar-core-commander`](https://github.com/stellar/stellar_core_commander) recipe files to add transactions and operations to ledgers using the stellar-core test framework.
 
 In order to add a new scenario or rebuild existing scenarios you need:
 
@@ -35,7 +31,7 @@ In order to add a new scenario or rebuild existing scenarios you need:
 2. [`stellar-core`](https://github.com/stellar/stellar-core) binary.
 3. This repository cloned locally.
 
-`scc` allows you to write scripts/recipes that are later executed in `stellar-core` isolated network. After executing a recipe you can then export `stellar-core` database to be able to run Horizon ingestion system against it (this repository contains a script that does this for you - read below).
+`scc` allows you to write scripts/recipes that are later executed in `stellar-core` isolated network. After executing a recipe you can then export the `stellar-core` database to be able to run Horizon ingestion system against it (this repository contains a script that does this for you - read below).
 
 ### Example recipe
 
