@@ -1,9 +1,9 @@
 ## Horizon Quickstart
 This document describes how to quickly set up a **test** Stellar Core + Horizon node, that you can play around with to get a feel for how a stellar node operates. **This configuration is not secure!** It is **not** intended as a guide for production administration.
 
-For detailed information about running Horizon and Stellar Core safely in production see the [Horizon Administration Guide](reference/admin.md) and the [Stellar Core Administration Guide](https://www.stellar.org/developers/stellar-core/software/admin.html).
+For detailed information about running Horizon and Stellar Core safely in production see the [Horizon Administration Guide](admin.md) and the [Stellar Core Administration Guide](https://www.stellar.org/developers/stellar-core/software/admin.html).
 
-If you're ready to roll up your sleeves and dig into the code, check out the [Developer Guide](developing2.md).
+If you're ready to roll up your sleeves and dig into the code, check out the [Developer Guide](developing.md).
 
 ### Install and run the Quickstart Docker Image
 The fastest way to get up and running is using the [Stellar Quickstart Docker Image](https://github.com/stellar/docker-stellar-core-horizon). This is a Docker container that provides both `stellar-core` and `horizon`, pre-configured for testing.
@@ -31,7 +31,7 @@ tail -f var/log/supervisor/horizon-stderr---supervisor-lkZnZ5.log
 
 On a modern laptop this test setup takes about 15 minutes to synchronise with the last couple of days of testnet ledgers. At that point Horizon will be available for querying. 
 
-See the [Quickstart Image documentation](https://github.com/stellar/docker-stellar-core-horizon) for more details, and alternative ways to run the container. 
+See the [Quickstart Docker Image](https://github.com/stellar/docker-stellar-core-horizon) documentation for more details, and alternative ways to run the container. 
 
 You can test your Horizon instance with a query like: http://localhost:8001/transactions?cursor=&limit=10&order=asc. Use the [Stellar Laboratory](https://www.stellar.org/laboratory/) to craft other queries to try out,
 and read about the available endpoints and see examples in the [Horizon API reference](https://www.stellar.org/developers/horizon/reference/).
