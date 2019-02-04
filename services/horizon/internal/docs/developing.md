@@ -2,6 +2,8 @@
 
 This document describes how to build Horizon from source, so that you can test and edit the code locally to develop bug fixes and new features.
 
+If you are just starting with Horizon and want to try it out, consider the [Quickstart Guide](quickstart) instead. For information about administrating a Horizon instance in production, check out the [Administration Guide](admin).
+
 ## Building Horizon
 Building Horizon requires the following developer tools:
 
@@ -91,4 +93,4 @@ Congratulations! You can now run the full development cycle to build and test yo
 4. Run Horizon (pointing at your running `stellar-core`)
 5. Try Horizon queries
 
-Check out the [Stellar contributing guide](https://github.com/stellar/docs/blob/master/CONTRIBUTING.md) to see how to contribute your work to the Stellar repositories. Once you've got something that works, open a pull request, linking to the issue that you are resolving with your contribution. We'll get back to you as quickly as we can.
+Check out the [Stellar Contributing Guide](https://github.com/stellar/docs/blob/master/CONTRIBUTING.md) to see how to contribute your work to the Stellar repositories. Once you've got something that works, open a pull request, linking to the issue that you are resolving with your contribution. We'll get back to you as quickly as we can.
