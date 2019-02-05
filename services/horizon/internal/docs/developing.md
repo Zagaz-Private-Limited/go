@@ -2,7 +2,7 @@
 
 This document describes how to build Horizon from source, so that you can test and edit the code locally to develop bug fixes and new features.
 
-If you are just starting with Horizon and want to try it out, consider the [Quickstart Guide](quickstart) instead. For information about administrating a Horizon instance in production, check out the [Administration Guide](admin).
+If you are just starting with Horizon and want to try it out, consider the [Quickstart Guide](quickstart.md) instead. For information about administrating a Horizon instance in production, check out the [Administration Guide](admin.md).
 
 ## Building Horizon
 Building Horizon requires the following developer tools:

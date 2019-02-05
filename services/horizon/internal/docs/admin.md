@@ -2,7 +2,7 @@
 
 Horizon is responsible for providing an HTTP API to data in the Stellar network. It ingests and re-serves the data produced by the stellar network in a form that is easier to consume than the performance-oriented data representations used by stellar-core.
 
-This document describes how to administer a **production** Horizon instance. If you are just starting with Horizon and want to try it out, consider the [Quickstart Guide](quickstart) instead. For information about developing on the Horizon codebase, check out the [Development Guide](developing).
+This document describes how to administer a **production** Horizon instance. If you are just starting with Horizon and want to try it out, consider the [Quickstart Guide](quickstart.md) instead. For information about developing on the Horizon codebase, check out the [Development Guide](developing.md).
 
 ## Why run Horizon?
 
